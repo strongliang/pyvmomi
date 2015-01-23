@@ -47,6 +47,10 @@ def GetArgs():
                        help='User name to use when connecting to host')
    parser.add_argument('-p', '--password', required=False, action='store',
                        help='Password to use when connecting to host')
+   parser.add_argument('--key-file', required=False, action='store',
+                       help='ssh-key path')
+   parser.add_argument('--cert-file', required=False, action='store',
+                       help='certificate file path')
    args = parser.parse_args()
    return args
 
@@ -99,7 +103,9 @@ def main():
    si = SmartConnect(host=args.host,
                      user=args.user,
                      pwd=password,
-                     port=int(args.port))
+                     port=int(args.port),
+                     keyFile=args.key_file,
+                     certFile=args.cert_file)
    if not si:
        print("Could not connect to the specified host using specified "
              "username and password")
