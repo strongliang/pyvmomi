@@ -531,7 +531,7 @@ def __FindSupportedVersion(protocol, server, port, path, preferredApiVersions):
 
 
 def SmartConnect(protocol='https', host='localhost', port=443, user='root', pwd='',
-                 service="hostd", path="/sdk",
+                 service="hostd", path="/sdk", keyFile=None, certFile=None,
                  preferredApiVersions=None):
    """
    Determine the most preferred API version supported by the specified server,
@@ -587,7 +587,9 @@ def SmartConnect(protocol='https', host='localhost', port=443, user='root', pwd=
                   service=service,
                   adapter='SOAP',
                   version=supportedVersion,
-                  path=path)
+                  path=path,
+                  keyFile=keyFile,
+                  certFile=certFile)
 
 def OpenUrlWithBasicAuth(url, user='root', pwd=''):
    """
